@@ -1,0 +1,3 @@
+https://mmlqk.payzuva.com/#/sell/sellOut   selling page
+https://mmlqk.payzuva.com/#/sell/details?orderNo=C2C2026091009351600026 -- sell matching page
+https://mmlqk.payzuva.com/#/home base url homepage

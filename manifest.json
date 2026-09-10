@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Component Auto Refresher",
+  "version": "1.0",
+  "description": "Refreshes web components using custom shortcuts.",
+  "permissions": [
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "commands": {
+    "trigger-refresh-shortcut": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Triggers the component refresh sequence"
+    }
+  },
+"content_scripts": [
+  {
+    "matches": ["<all_urls>"],
+    "js": ["content.js"],
+    "run_at": "document_start"
+  }
+]
+}

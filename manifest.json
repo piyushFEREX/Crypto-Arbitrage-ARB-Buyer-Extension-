@@ -4,7 +4,8 @@
   "version": "1.0",
   "description": "Refreshes web components using custom shortcuts.",
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
   "background": {
     "service_worker": "background.js",
@@ -19,11 +20,15 @@
       "description": "Triggers the component refresh sequence"
     }
   },
-"content_scripts": [
-  {
-    "matches": ["<all_urls>"],
-    "js": ["content.js"],
-    "run_at": "document_start"
-  }
-]
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
 }

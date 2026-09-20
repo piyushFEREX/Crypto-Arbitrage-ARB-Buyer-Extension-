@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AutoBuy Free</title>
+
+  <style>
+
+    /* =========================================================
+       EASY CUSTOMIZATION
+       ========================================================= */
+
+    :root {
+
+      /*
+        CHANGE ONLY THIS LINE TO CHANGE THE HEADER IMAGE.
+
+        Example:
+        url("assets/header.jpg")
+        url("assets/japan.jpg")
+        url("assets/sakura.png")
+      */
+
+      --header-image: url("assets/header.gif");
+
+
+      /* Main colors */
+
+      --cream: #fff8ed;
+      --paper: #fffdf8;
+      --paper-dark: #f5eadb;
+
+      --navy: #041f4b;
+      --navy-soft: #435673;
+
+      --blue: #6fa8c7;
+      --blue-light: #e7f1f6;
+
+      --red: #d94a48;
+      --red-dark: #bf3938;
+      --red-light: #fae8e3;
+
+      --sakura: #e7a3a5;
+
+      --border: #d9cfc2;
+      --border-dark: #c9bcab;
+
+      --muted: #8d887f;
+
+      --shadow:
+        0 4px 14px rgba(55, 45, 35, 0.10);
+    }
+
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 410px;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #eee8df;
+
+      color: var(--navy);
+
+      font-family:
+        "Noto Sans JP",
+        "Yu Gothic",
+        "Hiragino Kaku Gothic ProN",
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+      overflow: hidden;
+    }
+
+
+    /* =========================================================
+       MAIN PAPER
+       ========================================================= */
+
+    .container {
+      width: 410px;
+
+      padding: 12px;
+
+      background: var(--cream);
+
+      border: 1px solid var(--border);
+
+      box-shadow: var(--shadow);
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+
+    .paper-frame {
+      border: 1px solid var(--border-dark);
+
+      background: var(--paper);
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+
+    /* =========================================================
+       TOP ACCENT
+       ========================================================= */
+
+    .top-accent {
+      position: absolute;
+
+      top: 0;
+      left: 18px;
+
+      width: 54px;
+      height: 3px;
+
+      display: flex;
+
+      z-index: 20;
+    }
+
+    .top-accent .cyan {
+      flex: 1;
+
+      background: var(--blue);
+    }
+
+    .top-accent .red {
+      width: 15px;
+
+      background: var(--red);
+    }
+
+
+    /* =========================================================
+       IMAGE HEADER
+       ========================================================= */
+
+    .hero {
+      height: 145px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      /*
+        YOUR IMAGE GOES HERE
+      */
+
+      background-image:
+        linear-gradient(
+          rgba(255, 248, 237, 0.08),
+          rgba(255, 248, 237, 0.08)
+        ),
+        var(--header-image);
+
+      background-size: cover;
+
+      background-position: center;
+
+      background-repeat: no-repeat;
+
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+
+    /*
+      Optional soft paper overlay.
+
+      Keeps text readable without destroying
+      the background image.
+    */
+
+    .hero::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.03) 0%,
+          rgba(255,255,255,0.00) 45%,
+          rgba(255,248,237,0.35) 100%
+        );
+
+      pointer-events: none;
+
+      z-index: 2;
+    }
+
+
+    /* =========================================================
+       HEADER BRAND
+       ========================================================= */
+
+    .hero-brand {
+      position: absolute;
+      padding: 0 12px;;
+      left: 14px;
+      right: 14px;
+
+      bottom: 12px;
+/* background-color: red; */
+      z-index: 5;
+
+      text-align: left;
+    }
+
+
+    .hero-title {
+      display: inline-block;
+      padding: 5px 12px;
+
+      background:
+        rgba(255, 253, 248, 0.94);
+
+      border: 1px solid rgba(217, 207, 194, .9);
+
+      color: var(--navy);
+
+      font-size: 21px;
+
+      font-weight: 700;
+
+      letter-spacing: -0.6px;
+
+      box-shadow:
+        0 2px 7px rgba(40, 35, 30, .08);
+    }
+
+
+    .hero-title span {
+      color: var(--red);
+    }
+
+
+    .hero-subtitle {
+      margin-top: 4px;
+
+      display: inline-block;
+
+      padding: 3px 9px;
+
+      background:
+        rgba(255, 253, 248, .88);
+
+      color: var(--navy-soft);
+
+      font-size: 7px;
+
+      font-weight: 600;
+
+      letter-spacing: 1.8px;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       IMAGE POSITION HELPER
+       =========================================================
+
+       If your image's important subject is too high/low,
+       change:
+
+       background-position: center;
+
+       to something like:
+
+       center 30%;
+       center 60%;
+       left center;
+       right center;
+
+    */
+
+
+    /* =========================================================
+       DECORATIVE STRIP
+       ========================================================= */
+
+    .decor-strip {
+      height: 18px;
+
+      position: relative;
+
+      background: var(--paper);
+
+      border-bottom: 1px solid var(--border);
+
+      overflow: hidden;
+    }
+
+
+    .decor-strip::before {
+      content: "";
+
+      position: absolute;
+
+      left: 18px;
+      right: 18px;
+
+      top: 7px;
+
+      height: 2px;
+
+      background: var(--red);
+    }
+
+
+    .decor-strip::after {
+      content: "";
+
+      position: absolute;
+
+      left: 25%;
+      right: 25%;
+
+      top: 5px;
+
+      height: 6px;
+
+      background: var(--cream);
+
+      border-left: 1px solid var(--border-dark);
+
+      border-right: 1px solid var(--border-dark);
+    }
+
+
+    /* =========================================================
+       CONTENT
+       ========================================================= */
+
+    .content {
+      padding: 13px 14px 12px;
+
+      background: var(--paper);
+    }
+
+
+    /* =========================================================
+       FORM
+       ========================================================= */
+
+    .row {
+      display: flex;
+
+      gap: 9px;
+    }
+
+
+    .row .form-group {
+      flex: 1;
+    }
+
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+
+    label {
+      display: flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      margin-bottom: 5px;
+
+      color: var(--navy);
+
+      font-size: 9px;
+
+      font-weight: 600;
+    }
+
+
+    label::before {
+      content: "";
+
+      width: 4px;
+      height: 11px;
+
+      background: var(--blue);
+
+      border-radius: 1px;
+
+      transform: skewX(-18deg);
+
+      flex-shrink: 0;
+    }
+
+
+    .row .form-group:nth-child(2) label::before {
+      background: var(--red);
+    }
+
+
+    input[type="number"],
+    select {
+      width: 100%;
+
+      height: 35px;
+
+      padding: 0 10px;
+
+      background: #faf9f6;
+
+      border: 1px solid var(--border);
+
+      border-radius: 4px;
+
+      color: var(--navy);
+
+      font-family: inherit;
+
+      font-size: 12px;
+
+      font-weight: 500;
+
+      outline: none;
+
+      transition:
+        border-color .18s ease,
+        background .18s ease;
+    }
+
+
+    input[type="number"]:hover,
+    select:hover {
+      background: #ffffff;
+
+      border-color: #c8bcae;
+    }
+
+
+    input[type="number"]:focus,
+    select:focus {
+      background: #ffffff;
+
+      border-color: var(--blue);
+
+      box-shadow:
+        0 0 0 2px rgba(111, 168, 199, .13);
+    }
+
+
+    input::placeholder {
+      color: #a9a39a;
+    }
+
+
+    /* =========================================================
+       SELECT
+       ========================================================= */
+
+    select {
+      appearance: none;
+
+      cursor: pointer;
+
+      padding-right: 28px;
+
+      /* background-image:
+        linear-gradient(
+          45deg,
+          transparent 50%,
+          #68778b 50%
+        ),
+        linear-gradient(
+          135deg,
+          #68778b 50%,
+          transparent 50%
+        ); */
+
+      background-position:
+        calc(100% - 13px) 15px,
+        calc(100% - 8px) 15px;
+
+      background-size: 5px 5px;
+
+      background-repeat: no-repeat;
+    }
+
+
+    select option {
+      background: white;
+
+      color: var(--navy);
+    }
+
+
+    /* =========================================================
+       PAYMENT OPTION
+       ========================================================= */
+
+    .toggle-group {
+      min-height: 47px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 7px 9px;
+
+      margin: 11px 0;
+
+      background: #fbf8f3;
+
+      border: 1px solid var(--border);
+
+      border-radius: 5px;
+    }
+
+
+    .toggle-left {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+    }
+
+
+    .toggle-icon {
+      width: 27px;
+      height: 27px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background: var(--red-light);
+
+      border-radius: 4px;
+
+      color: var(--red);
+
+      font-size: 13px;
+    }
+
+
+    .toggle-title {
+      color: var(--navy);
+
+      font-size: 10px;
+
+      font-weight: 600;
+    }
+
+
+    .toggle-description {
+      margin-top: 2px;
+
+      color: var(--muted);
+
+      font-size: 7.5px;
+    }
+
+
+    /* =========================================================
+       SWITCH
+       ========================================================= */
+
+    .switch {
+      position: relative;
+
+      width: 39px;
+      height: 20px;
+
+      flex-shrink: 0;
+    }
+
+
+    .switch input {
+      opacity: 0;
+
+      width: 0;
+      height: 0;
+    }
+
+
+    .slider {
+      position: absolute;
+
+      inset: 0;
+
+      background: #d7d2cb;
+
+      border-radius: 20px;
+
+      cursor: pointer;
+
+      transition: .2s;
+    }
+
+
+    .slider::before {
+      content: "";
+
+      position: absolute;
+
+      width: 14px;
+      height: 14px;
+
+      left: 3px;
+      top: 3px;
+
+      background: white;
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 1px 3px rgba(0,0,0,.18);
+
+      transition: .2s;
+    }
+
+
+    input:checked + .slider {
+      background: var(--red);
+    }
+
+
+    input:checked + .slider::before {
+      transform: translateX(19px);
+    }
+
+
+    /* =========================================================
+       BUTTONS
+       ========================================================= */
+
+    .button-group {
+      display: flex;
+
+      gap: 9px;
+
+      margin-top: 10px;
+    }
+
+
+    button {
+      flex: 1;
+
+      height: 39px;
+
+      border: 1px solid transparent;
+
+      border-radius: 4px;
+
+      cursor: pointer;
+
+      font-family: inherit;
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+    }
+
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+
+    button:active {
+      transform: translateY(0);
+    }
+
+
+    .btn-start {
+      color: white;
+
+      background: var(--blue);
+
+      border-color: #639bb8;
+
+      box-shadow:
+        0 3px 7px rgba(70, 120, 145, .15);
+    }
+
+
+    .btn-stop {
+      color: white;
+
+      background: var(--red);
+
+      border-color: var(--red-dark);
+
+      box-shadow:
+        0 3px 7px rgba(170, 65, 60, .13);
+    }
+
+
+    .button-icon {
+      margin-right: 5px;
+
+      font-size: 9px;
+    }
+
+
+    /* =========================================================
+       STATUS
+       ========================================================= */
+
+    .status-bar {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      margin-top: 12px;
+
+      padding: 9px 1px 2px;
+
+      border-top: 1px solid var(--border);
+    }
+
+
+    #statusIndicator {
+      display: flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      color: var(--navy);
+
+      font-size: 11px;
+
+      font-weight: 600;
+    }
+
+
+    #statusIndicator::before {
+      content: "";
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: #9da59d;
+
+      border: 2px solid #e6e8e3;
+    }
+
+
+    .status-detail {
+      color: var(--muted);
+
+      font-size: 8px;
+    }
+
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    .footer {
+      height: 25px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      margin-top: 5px;
+
+      padding-top: 5px;
+
+      border-top: 1px solid #eee8df;
+
+      color: #1b1313;
+
+      font-size: 7px;
+    }
+
+
+    .footer-mark {
+      display: flex;
+
+      gap: 3px;
+
+      align-items: center;
+    }
+
+
+    .footer-mark span {
+      width: 4px;
+      height: 10px;
+
+      border-radius: 1px;
+
+      transform: rotate(25deg);
+    }
+
+
+    .footer-mark span:first-child {
+      background: var(--blue);
+    }
+
+
+    .footer-mark span:last-child {
+      background: var(--red);
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <div class="container">
+
+    <div class="paper-frame">
+
+
+      <!-- =====================================================
+           IMAGE HEADER
+           ===================================================== -->
+
+      <div class="hero">
+
+        <div class="hero-brand">
+
+          <div class="hero-title" style="border-radius: 2rem; opacity: 0.8;">
+            AutoBuy <span>Free</span>
+          </div>
+<br>
+          <div class="hero-subtitle" style="border-radius: 2rem; opacity: 0.6;">
+            Fast Buyer for OTP-UPI
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Decorative Japanese-style divider -->
+
+      <div class="decor-strip"></div>
+
+
+      <!-- =====================================================
+           CONTROLS
+           ===================================================== -->
+
+      <div class="content">
+
+
+        <!-- PRICE RANGE -->
+
+        <div class="row">
+
+          <div class="form-group">
+
+            <label for="minVal">
+              Min Price (₹)
+            </label>
+
+            <input
+              type="number"
+              id="minVal"
+              placeholder="800"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="maxVal">
+              Max Price (₹)
+            </label>
+
+            <input
+              type="number"
+              id="maxVal"
+              placeholder="1000"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- REFRESH DELAY -->
+
+        <div class="form-group">
+
+          <label for="delayMs">
+            Refresh Delay (ms)
+          </label>
+
+          <input
+            type="number"
+            id="delayMs"
+            placeholder="50"
+          >
+
+        </div>
+
+
+        <!-- TARGET TAB -->
+
+        <div class="form-group">
+
+          <label for="targetTab">
+            Target Tab
+          </label>
+
+          <select id="targetTab">
+
+            <option
+              value="OTP-UPI"
+              selected
+            >
+              OTP-UPI
+            </option>
+
+            <option value="CARD">
+              Card / Banking (Future)
+            </option>
+
+            <option value="NETBANKING">
+              NetBanking (Future)
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- AUTO SELECT PAYMENT -->
+
+        <div class="toggle-group">
+
+          <div class="toggle-left">
+
+            <div class="toggle-icon">
+              ⚡
+            </div>
+
+
+            <div>
+
+              <div class="toggle-title">
+                Auto-select payment
+              </div>
+
+              <div class="toggle-description">
+                Automatically select payment method
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <label class="switch">
+
+            <input
+              type="checkbox"
+              id="autoSelectPayment"
+              checked
+            >
+
+            <span class="slider"></span>
+
+          </label>
+
+        </div>
+
+
+        <!-- ACTION BUTTONS -->
+
+        <div class="button-group">
+
+          <button
+            id="startBtn"
+            class="btn-start"
+          >
+            <span class="button-icon">▶</span>
+            Start
+          </button>
+
+
+          <button
+            id="stopBtn"
+            class="btn-stop"
+          >
+            <span class="button-icon">■</span>
+            Stop
+          </button>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div class="status-bar">
+
+          <div id="statusIndicator">
+            Status: Standby
+          </div>
+
+          <div class="status-detail">
+            Ready to operate
+          </div>
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+
+          <div class="footer-mark">
+            <span></span>
+            <span></span>
+          </div>
+
+          <div>
+            AutoBuy Free by <b>Piyush</b>
+          </div>
+
+          <div>
+            v1.5
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- YOUR EXISTING LOGIC -->
+
+  <script src="popup.js"></script>
+
+</body>
+</html>
